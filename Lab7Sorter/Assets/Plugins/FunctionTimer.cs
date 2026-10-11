@@ -11,9 +11,10 @@ public class FunctionTimer : MonoBehaviour
     // Method 1: Native C++ DLL import
     [DllImport("intigerSorter", EntryPoint = "TestSort")]
     public static extern void NativeSort(int[] a, int length);
+    public monoIntigerSorter Mono;
 
     void Start()
-    {
+    { 
         RunAllBenchmarks();
     }
 
@@ -52,18 +53,14 @@ public class FunctionTimer : MonoBehaviour
             int[] arrayVanilla = (int[])originalArray.Clone();
             long startVanilla = Stopwatch.GetTimestamp();
             
-            VanillaMonoBehaviourSort(arrayVanilla);
+            Mono.VanillaMonoBehaviourSort(arrayVanilla);
 
             long ticksVanilla = Stopwatch.GetTimestamp() - startVanilla;
             double microsVanilla = (ticksVanilla * 1000000.0) / frequency;
             UnityEngine.Debug.Log($"MonoBehaviour Script took: {microsVanilla:F2} microseconds");
     }
 
-    void VanillaMonoBehaviourSort(int[] a)
-    {
-        // Standard C# sorting inside the MonoBehaviour class
-        Array.Sort(a);
-    }
+    
 
     public static int[] LoadNumbersFromFile()
     {

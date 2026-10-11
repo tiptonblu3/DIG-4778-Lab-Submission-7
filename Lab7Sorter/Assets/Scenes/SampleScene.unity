@@ -392,7 +392,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 463138363}
-  - component: {fileID: 463138362}
+  - component: {fileID: 463138364}
+  - component: {fileID: 463138365}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -400,19 +401,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &463138362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463138361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6897c7166c1a33241860613d2322a5bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp-firstpass::TestDLL
-  a: 01000000030000000500000002000000
 --- !u!4 &463138363
 Transform:
   m_ObjectHideFlags: 0
@@ -428,6 +416,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &463138364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463138361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c9cdafe68ad0a4d8d0be6ad0afd4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::FunctionTimer
+  Mono: {fileID: 463138365}
+--- !u!114 &463138365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463138361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7378563580e5a4a942189220eb640a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::monoIntigerSorter
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
