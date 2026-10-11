@@ -23,35 +23,40 @@ public class FunctionTimer : MonoBehaviour
         int[] originalArray = LoadNumbersFromFile();
         if (originalArray.Length == 0) return;
 
+        //for micro seconds
+        double frequency = (double)Stopwatch.Frequency; 
         
         // The Native Plugin (that uses C++)
             int[] arrayNative = (int[])originalArray.Clone();
-            Stopwatch sw1 = Stopwatch.StartNew();
+            long startNative = Stopwatch.GetTimestamp();
             
             NativeSort(arrayNative, arrayNative.Length);
 
-            sw1.Stop();
-            UnityEngine.Debug.Log($"Method 1 (Native C++ Plugin) took: {sw1.ElapsedMilliseconds} ms");
+            long ticksNative = Stopwatch.GetTimestamp() - startNative;
+            double microsNative = ticksNative * 1000000.0 / frequency;
+            UnityEngine.Debug.Log($"Native C++ Plugin took: {microsNative:F2} microseconds");
 
 
         // The Managed Plugin (that is a C# DLL)
             int[] arrayManaged = (int[])originalArray.Clone();
-            Stopwatch sw2 = Stopwatch.StartNew();
+            long startManaged = Stopwatch.GetTimestamp();
             
             ManagedPlugin.IntegerSorter.Sort(arrayManaged);
             
-            sw2.Stop();
-            UnityEngine.Debug.Log($"Method 2 (Managed C# Plugin) took: {sw2.ElapsedMilliseconds} ms");
+            long ticksManaged = Stopwatch.GetTimestamp() - startManaged;
+            double microsManaged = (ticksManaged * 1000000.0) / frequency;
+            UnityEngine.Debug.Log($"Managed C# Plugin took: {microsManaged:F2} microseconds");
 
 
         // The average MonoBehaviour C# Script
             int[] arrayVanilla = (int[])originalArray.Clone();
-            Stopwatch sw3 = Stopwatch.StartNew();
+            long startVanilla = Stopwatch.GetTimestamp();
             
             VanillaMonoBehaviourSort(arrayVanilla);
 
-            sw3.Stop();
-            UnityEngine.Debug.Log($"Method 3 (MonoBehaviour Class) took: {sw3.ElapsedMilliseconds} ms");
+            long ticksVanilla = Stopwatch.GetTimestamp() - startVanilla;
+            double microsVanilla = (ticksVanilla * 1000000.0) / frequency;
+            UnityEngine.Debug.Log($"MonoBehaviour Script took: {microsVanilla:F2} microseconds");
     }
 
     void VanillaMonoBehaviourSort(int[] a)
